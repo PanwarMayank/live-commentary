@@ -1,12 +1,5 @@
-FROM golang:1.16-alpine
-WORKDIR /app
-COPY go.mod ./
-COPY go.sum ./
-RUN go mod download
+FROM nginx
 
-COPY . .
+COPY nginx.conf /etc/nginx/nginx.conf
 
-RUN go build -o main .
-
-EXPOSE 9900
-
+EXPOSE 80
